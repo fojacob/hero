@@ -52,12 +52,16 @@ public class Game {
 
     private void processKey (KeyStroke key) throws IOException {
         switch (key.getKeyType()){
-            case ArrowDown: hero.moveDown(); break;
-            case ArrowUp: hero.moveUp(); break;
-            case ArrowLeft: hero.moveLeft(); break;
-            case ArrowRight: hero.moveRight(); break;
+            case ArrowDown: moveHero(hero.moveDown()); break;
+            case ArrowUp: moveHero(hero.moveUp()); break;
+            case ArrowLeft: moveHero(hero.moveLeft()); break;
+            case ArrowRight: moveHero(hero.moveRight()); break;
             case Character: if(key.getCharacter() == 'q'){screen.close();} break;
         }
         System.out.println(key);
+    }
+
+    private void moveHero (Position position){
+        hero.setPosition(position);
     }
 }
