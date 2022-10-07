@@ -27,5 +27,4 @@ public class Position {
         return y;
     }
 
-
 }
