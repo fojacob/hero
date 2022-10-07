@@ -5,6 +5,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Hero extends Element{
+    private int coins=0;
     Hero(int x, int y){super(x,y);}
 
     public Position moveUp(){
@@ -30,5 +31,9 @@ public class Hero extends Element{
         graphics.putString(new TerminalPosition(getX(), getY()), "X");
     }
 
+    public void addCoin(){coins++;}
 
+    public int getCoins() {
+        return coins;
+    }
 }
