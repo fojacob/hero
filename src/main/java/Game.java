@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen;
-    private int x=10;
-    private int y=10;
+
+    Hero hero = new Hero (10,10);
 
     Game(){
         try {
@@ -33,9 +33,10 @@ public class Game {
     private void draw(Screen screen) throws IOException{
         //character creation
         screen.clear();
-        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
+        hero.draw(screen);
         screen.refresh();
     }
+
     public void run(){
         try {
             while (true){
@@ -48,12 +49,13 @@ public class Game {
              e.printStackTrace();
         }
     }
+
     private void processKey (KeyStroke key) throws IOException {
         switch (key.getKeyType()){
-            case ArrowDown: y+=1; break;
-            case ArrowUp: y -=1; break;
-            case ArrowLeft: x-=1; break;
-            case ArrowRight: x+=1; break;
+            case ArrowDown: hero.moveDown(); break;
+            case ArrowUp: hero.moveUp(); break;
+            case ArrowLeft: hero.moveLeft(); break;
+            case ArrowRight: hero.moveRight(); break;
             case Character: if(key.getCharacter() == 'q'){screen.close();} break;
         }
         System.out.println(key);
